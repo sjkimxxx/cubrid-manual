@@ -349,6 +349,8 @@ On the below table, if "Applied" is "server parameter", that parameter affects t
 |                               | data_buffer_neighbor_flush_pages    | server parameter        |         | int      | 8                              | DBA only              |
 |                               +-------------------------------------+-------------------------+---------+----------+--------------------------------+-----------------------+
 |                               | data_buffer_neighbor_flush_nondirty | server parameter        |         | bool     | no                             | DBA only              |
+|                               +-------------------------------------+-------------------------+---------+----------+--------------------------------+-----------------------+
+|                               | recovery_progress_logging_interval  | server parameter        |         | int      | 0                              |                       |
 +-------------------------------+-------------------------------------+-------------------------+---------+----------+--------------------------------+-----------------------+
 
 .. _lpg:
@@ -1898,6 +1900,8 @@ The following are other parameters. The type and value range for each parameter 
 +-------------------------------------+--------+----------------+----------------+----------------+
 | data_buffer_neighbor_flush_nondirty | bool   | no             |                |                |
 +-------------------------------------+--------+----------------+----------------+----------------+
+| recovery_progress_logging_interval  | int    | 0 (off)        | 0              | 3600           |
++-------------------------------------+--------+----------------+----------------+----------------+
 
 **access_ip_control**
 
@@ -2045,6 +2049,10 @@ The following are other parameters. The type and value range for each parameter 
 **data_buffer_neighbor_flush_nondirty**
     
 	**data_buffer_neighbor_flush_nondirty** is a parameter to control the flushing of non-dirty neighbor pages. When victim candidates pages are flushed, and neighbor flush is activated (**data_buffer_neighbor_flush_pages** is greater than 1), than single non-dirty pages which completes a chain of neighbor (dirty) pages are also flushed.
+
+**recovery_progress_logging_interval**
+    
+    **recovery_progress_logging_interval** is a parameter to decide whether the details of recovery are printed and configure its period in seconds. If it is set bigger than 0, the total works and remained works to do of the three phases of recovery: Analysis, Redo and Undo are printed. When this is set smaller than 5, it is set to 5.
 
 .. _broker-configuration:
 
