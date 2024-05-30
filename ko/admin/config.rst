@@ -615,7 +615,7 @@ CUBRID 설치 시 생성되는 기본 데이터베이스 환경 설정 파일(**
            172.31.0.1 alias1
            172.31.0.1 alias2
 
-        * 하나의 호스트명에 대해서 두개 이상의 IP는 허용하지 않는다. ::
+        * 두 개 이상의 IP에 동일한 호스트명을 사용할 경우 맨 위 줄에 있는 IP만 적용된다. ::
 
             172.31.0.1 host1
             178.31.0.2 host1
@@ -1579,6 +1579,15 @@ CUBRID 설치 시 생성되는 기본 데이터베이스 환경 설정 파일(**
         ==========
                0.5
 
+    .. note:: 
+
+        JDBC/CCI에서 NUMERIC, DOUBLE 및 FLOAT 타입의 데이터를 문자열 형태로 읽을 경우만 oracle_compat_number_behavior 설정값이 적용된다. 아래는 설정값이 적용되는 JDBC/CCI함수이다.
+		
+        *   JDBC : getString(int columnIndex), getString(String columnLabel), getObject(int columnIndex), getObject(String columnLabel)
+		
+        *   CCI : cci_get_data(CCI_A_TYPE_STR type을 사용한 경우), 예) cci_get_data(req, i, CCI_A_TYPE_STR, &data, &ind)
+
+
 .. _oracle_style_empty_string:
 
 **oracle_style_empty_string**
@@ -2359,7 +2368,7 @@ HA 관련 파라미터
 
 .. note::
 
-    *   **deduplicate_key_level**\를  **\-1**\로 지정하는 경우에는 CREATE INDEX 구문에서 명시적으로 *deduplicate level*\을 지정하더라도 무시되고 *deduplicate level*\은 0으로 강제 설정된다.
+    *   **deduplicate_key_level**\를  **\-1**\로 지정하는 경우에는 CREATE INDEX 구문에서 명시적으로 *deduplicate level*\을 지정하더라도 무시된다.
 
   
 **print_index_detail**

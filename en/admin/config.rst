@@ -616,7 +616,7 @@ The following are parameters related to the database server. The type and value 
            172.31.0.1 alias1
            172.31.0.1 alias2
 
-        * Not allow more than two IP address for one hostname. ::
+        * If you use the same hostname for more than one IP, only the topmost IP will be applied. ::
 
             172.31.0.1 host1
             178.31.0.2 host1
@@ -1589,6 +1589,14 @@ The following are parameters related to SQL statements and data types supported 
         ==========
                0.5
 
+    .. note:: 
+
+        The oracle_compat_number_behavior is only applied, when reading NUMERIC, DOUBLE, and FLOAT type data in string format in JDBC/CCI.  The related functions of JDBC/CCI are as follows.
+
+        * JDBC : getString(int columnIndex), getString(String columnLabel), getObject(int columnIndex) , getObject(String columnLabel)
+
+        * CCI :  cci_get_data (CCI_A_TYPE_STR as type), Example) cci_get_data(req, i, CCI_A_TYPE_STR, &data, &ind)
+		 
 .. _oracle_style_empty_string:
 
 **oracle_style_empty_string**
@@ -2389,7 +2397,7 @@ The following are other parameters. The type and value range for each parameter 
  
 .. note::
 
-    *   If **deduplicate_key_level** is set to **-1**, even if the *deduplicate level* is explicitly specified in the CREATE INDEX statement, it is ignored and the *deduplicate level* is forced to 0.
+    *   If **deduplicate_key_level** is set to **-1**, even if the *deduplicate level* is explicitly specified in the CREATE INDEX statement, it is ignored.
 
 
 **print_index_detail**

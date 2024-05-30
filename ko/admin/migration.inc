@@ -218,13 +218,14 @@ unloaddb
         demodb_schema_class
         demodb_schema_vclass
         demodb_schema_synonym
-        demodb_schema_vclass_query_spec
         demodb_schema_serial
         demodb_schema_procedure
         demodb_schema_server
         demodb_schema_pk
         demodb_schema_fk
+        demodb_schema_uk
         demodb_schema_grant
+        demodb_schema_vclass_query_spec
 
     분할된 스키마 파일들의 목록을 가지고 있는 파일명
     
@@ -551,6 +552,10 @@ loaddb
 .. warning::
 
     **\-\-no-logging** 옵션을 사용하면 **loaddb** 를 수행하면서 트랜잭션 로그를 저장하지 않으므로 데이터 파일을 빠르게 로드할 수 있다. 그러나 로드 도중 파일 형식이 잘못되거나 시스템이 다운되는 등의 문제가 발생했을 때 데이터를 복구할 수 없으므로 데이터베이스를 새로 구축해야 한다. 즉, 데이터를 복구할 필요가 없는 새로운 데이터베이스를 구축하는 경우를 제외하고는 사용하지 않도록 주의한다. 이 옵션을 사용하면 고유 위반 등의 오류를 검사하지 않아 기본 키에 값이 중복되는 경우 등이 발생할 수 있으므로, 사용 시 이러한 문제를 반드시 감안해야 한다.
+
+.. warning::
+
+    **loaddb** 실행 시 대량의 데이터 로딩에 대한 성능 보장과 로딩 데이터 간의 의존성을 최소화하기 위해 외래키 제약 조건에 대한 검사를 수행하지 않는다. 그러므로, HA 환경에서 **-C** 옵션을 이용하여 데이터를 로딩할 경우 슬레이브 또는 레플리카 노드 복제 과정에서 외래키 제약 조건 검사가 수행 되어 마스터 노드와 데이터 불일치가 발생할 수 있다.
 
 .. _howtowrite-loadfile:
 
