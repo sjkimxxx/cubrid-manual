@@ -1,4 +1,4 @@
-# cubrid-manual
+# cubrid-manuala
 Documentation for CUBRID RDBMS
 
 1. Extension of original files of this manual 
