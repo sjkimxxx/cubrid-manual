@@ -1,5 +1,5 @@
 # cubrid-manual
-Documentation for CUBRID RDBMSㅁ
+Documentation for CUBRID RDBMSㅁa
 
 1. Extension of original files of this manual 
 
