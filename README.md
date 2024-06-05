@@ -8,7 +8,7 @@ Documentation for CUBRID RDBMS
     *.inc
    ```
 
-2. Precaution to edit files.
+2. Precaution to edit files.a
 
     Please don't use tab character. Change your editor setting that "change tab as spaces". 1 tab should be 4 spaces.
     
