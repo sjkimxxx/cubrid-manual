@@ -1,6 +1,6 @@
 # Makefile for Sphinx documentation
-#
-a
+# a
+
 .PHONY: clean html
 
 help:
