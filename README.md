@@ -6,7 +6,7 @@ Documentation for CUBRID RDBMS
    ```
     *.rst
     *.inc
-   ```
+   ``` 
 
 2. Precaution to edit files.
 
