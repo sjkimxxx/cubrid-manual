@@ -7,7 +7,7 @@ Documentation for CUBRID RDBMS
     *.rst
     *.inc
    ```
-
+ 
 2. Precaution to edit files.
 
     Please don't use tab character. Change your editor setting that "change tab as spaces". 1 tab should be 4 spaces.
